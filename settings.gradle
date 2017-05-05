@@ -15,4 +15,4 @@
  */
 
 
-include ':topeka-base'
+include ':topeka-base', ':topekaapk'
