@@ -53,6 +53,7 @@ ext {
 }
 
 dependencies {
+    feature project(":topeka-ui")
     compile "com.android.support:appcompat-v7:${supportLibVersion}"
     compile "com.android.support:cardview-v7:${supportLibVersion}"
     compile "com.android.support:design:${supportLibVersion}"
@@ -78,4 +79,5 @@ dependencies {
     }
 
     androidTestCompile "org.hamcrest:hamcrest-core:${hamcrestVersion}"
+    compile 'com.android.support:appcompat-v7:25.3.1'
 }
