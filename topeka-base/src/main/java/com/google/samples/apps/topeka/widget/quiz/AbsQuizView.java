@@ -41,7 +41,6 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.google.samples.apps.topeka.R;
-import com.google.samples.apps.topeka.activity.QuizActivity;
 import com.google.samples.apps.topeka.helper.ApiLevelHelper;
 import com.google.samples.apps.topeka.helper.ViewUtils;
 import com.google.samples.apps.topeka.model.Category;
@@ -280,7 +279,6 @@ public abstract class AbsQuizView<Q extends Quiz> extends FrameLayout {
      * @param answerCorrect <code>true</code> if the answer was correct, else <code>false</code>.
      */
     private void performScoreAnimation(final boolean answerCorrect) {
-        ((QuizActivity) getContext()).lockIdlingResource();
         // Decide which background color to use.
         final int backgroundColor = ContextCompat.getColor(getContext(),
                 answerCorrect ? R.color.green : R.color.red);
@@ -347,8 +345,8 @@ public abstract class AbsQuizView<Q extends Quiz> extends FrameLayout {
             @Override
             public void run() {
                 mCategory.setScore(getQuiz(), answerCorrect);
-                if (getContext() instanceof QuizActivity) {
-                    ((QuizActivity) getContext()).proceed();
+                if (getContext() instanceof NextStepHandler) {
+                    ((NextStepHandler) getContext()).proceed();
                 }
             }
         };
@@ -359,4 +357,10 @@ public abstract class AbsQuizView<Q extends Quiz> extends FrameLayout {
     private void setMinHeightInternal(View view) {
         view.setMinimumHeight(getResources().getDimensionPixelSize(R.dimen.min_height_question));
     }
+
+    // near the end of the class (line 361) add:
+    public interface NextStepHandler {
+        void proceed();
+    }
+
 }

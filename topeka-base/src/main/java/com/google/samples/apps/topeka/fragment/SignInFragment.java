@@ -17,10 +17,13 @@
 package com.google.samples.apps.topeka.fragment;
 
 import android.app.Activity;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.util.Pair;
@@ -37,7 +40,6 @@ import android.widget.EditText;
 import android.widget.GridView;
 
 import com.google.samples.apps.topeka.R;
-import com.google.samples.apps.topeka.activity.CategorySelectionActivity;
 import com.google.samples.apps.topeka.adapter.AvatarAdapter;
 import com.google.samples.apps.topeka.helper.ApiLevelHelper;
 import com.google.samples.apps.topeka.helper.PreferencesHelper;
@@ -50,6 +52,8 @@ import com.google.samples.apps.topeka.widget.TransitionListenerAdapter;
  * Enable selection of an {@link Avatar} and user name.
  */
 public class SignInFragment extends Fragment {
+
+    private static final String EXTRA_PLAYER = "player";
 
     private static final String ARG_EDIT = "EDIT";
     private static final String KEY_SELECTED_AVATAR_INDEX = "selectedAvatarIndex";
@@ -117,9 +121,21 @@ public class SignInFragment extends Fragment {
             initContentViews(view);
             initContents();
         } else {
+
             final Activity activity = getActivity();
+
+            /*
             CategorySelectionActivity.start(activity, mPlayer);
+            */
+
+            final Intent intent = new Intent(Intent.ACTION_VIEW,
+                    Uri.parse("https://topeka.samples.androidinstantapps.com/category"));
+            intent.setPackage(activity.getApplicationContext().getPackageName());
+            intent.addCategory(Intent.CATEGORY_BROWSABLE);
+            intent.putExtra(EXTRA_PLAYER, mPlayer);
+            activity.startActivityForResult(intent, 1);
             activity.finish();
+
         }
         super.onViewCreated(view, savedInstanceState);
     }
@@ -223,7 +239,14 @@ public class SignInFragment extends Fragment {
         final Activity activity = getActivity();
         if (v == null || ApiLevelHelper.isLowerThan(Build.VERSION_CODES.LOLLIPOP)) {
             // Don't run a transition if the passed view is null
-            CategorySelectionActivity.start(activity, mPlayer);
+
+            final Intent intent = new Intent(Intent.ACTION_VIEW,
+                    Uri.parse("https://topeka.samples.androidinstantapps.com/category"));
+            intent.setPackage(activity.getApplicationContext().getPackageName());
+            intent.addCategory(Intent.CATEGORY_BROWSABLE);
+            intent.putExtra(EXTRA_PLAYER, mPlayer);
+            activity.startActivityForResult(intent, 1);
+
             activity.finish();
             return;
         }
@@ -242,7 +265,16 @@ public class SignInFragment extends Fragment {
             @SuppressWarnings("unchecked")
             ActivityOptionsCompat activityOptions = ActivityOptionsCompat
                     .makeSceneTransitionAnimation(activity, pairs);
-            CategorySelectionActivity.start(activity, mPlayer, activityOptions);
+
+            final Intent intent = new Intent(Intent.ACTION_VIEW,
+                    Uri.parse("https://topeka.samples.androidinstantapps.com/category"));
+            intent.setPackage(activity.getApplicationContext().getPackageName());
+            intent.addCategory(Intent.CATEGORY_BROWSABLE);
+            intent.putExtra(EXTRA_PLAYER, mPlayer);
+
+            ActivityCompat.startActivity(activity, intent, activityOptions.toBundle());
+            activity.finish();
+
         }
     }
 

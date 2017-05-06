@@ -68,6 +68,8 @@ public class CategorySelectionActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+
         ActivityCategorySelectionBinding binding = DataBindingUtil
                 .setContentView(this, R.layout.activity_category_selection);
         Player player = getIntent().getParcelableExtra(EXTRA_PLAYER);
@@ -78,6 +80,7 @@ public class CategorySelectionActivity extends AppCompatActivity {
                 PreferencesHelper.writeToPreferences(this, player);
             }
         }
+
         binding.setPlayer(player);
         setUpToolbar();
         if (savedInstanceState == null) {
