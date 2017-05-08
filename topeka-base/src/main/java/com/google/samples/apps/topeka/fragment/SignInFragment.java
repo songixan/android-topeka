@@ -269,7 +269,6 @@ public class SignInFragment extends Fragment {
             intent.putExtra(EXTRA_PLAYER, mPlayer);
 
             ActivityCompat.startActivity(activity, intent, activityOptions.toBundle());
-            activity.finish();
 
         }
     }
