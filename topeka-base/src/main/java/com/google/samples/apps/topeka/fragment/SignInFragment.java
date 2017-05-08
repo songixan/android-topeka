@@ -124,10 +124,6 @@ public class SignInFragment extends Fragment {
 
             final Activity activity = getActivity();
 
-            /*
-            CategorySelectionActivity.start(activity, mPlayer);
-            */
-
             final Intent intent = new Intent(Intent.ACTION_VIEW,
                     Uri.parse("https://topeka.samples.androidinstantapps.com/category"));
             intent.setPackage(activity.getApplicationContext().getPackageName());
