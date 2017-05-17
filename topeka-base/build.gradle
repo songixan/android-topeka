@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-apply plugin: 'com.android.application'
+apply plugin: 'com.android.feature'
 
 android {
     buildToolsVersion '26.0.0-rc1'
@@ -25,7 +25,6 @@ android {
     }
 
     defaultConfig {
-        applicationId "com.google.samples.apps.topeka"
         minSdkVersion 19
         targetSdkVersion 25
         versionCode 1
@@ -35,9 +34,11 @@ android {
 
     buildTypes {
         release {
-            minifyEnabled true
+            minifyEnabled false
         }
     }
+
+    baseFeature = true
 
     packagingOptions {
         exclude 'LICENSE.txt'
