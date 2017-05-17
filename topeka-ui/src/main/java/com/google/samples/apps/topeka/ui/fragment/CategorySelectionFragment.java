@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.google.samples.apps.topeka.fragment;
+package com.google.samples.apps.topeka.ui.fragment;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -30,11 +30,11 @@ import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
 
 import com.google.samples.apps.topeka.R;
-import com.google.samples.apps.topeka.activity.QuizActivity;
 import com.google.samples.apps.topeka.adapter.CategoryAdapter;
 import com.google.samples.apps.topeka.helper.TransitionHelper;
 import com.google.samples.apps.topeka.model.Category;
 import com.google.samples.apps.topeka.model.JsonAttributes;
+import com.google.samples.apps.topeka.ui.activity.QuizActivity;
 import com.google.samples.apps.topeka.widget.OffsetDecoration;
 
 public class CategorySelectionFragment extends Fragment {
@@ -108,7 +108,7 @@ public class CategorySelectionFragment extends Fragment {
         ActivityCompat.startActivityForResult(activity,
                 startIntent,
                 REQUEST_CATEGORY,
-                transitionBundle);
+                null);
     }
 
 }

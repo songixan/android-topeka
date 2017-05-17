@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.google.samples.apps.topeka.fragment;
+package com.google.samples.apps.topeka.ui.fragment;
 
 import android.annotation.TargetApi;
 import android.os.Build;

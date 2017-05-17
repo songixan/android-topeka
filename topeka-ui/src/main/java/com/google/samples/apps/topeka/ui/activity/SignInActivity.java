@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.google.samples.apps.topeka.activity;
+package com.google.samples.apps.topeka.ui.activity;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -24,7 +24,7 @@ import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v7.app.AppCompatActivity;
 
 import com.google.samples.apps.topeka.R;
-import com.google.samples.apps.topeka.fragment.SignInFragment;
+import com.google.samples.apps.topeka.ui.fragment.SignInFragment;
 import com.google.samples.apps.topeka.helper.PreferencesHelper;
 
 public class SignInActivity extends AppCompatActivity {

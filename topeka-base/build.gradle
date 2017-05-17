@@ -79,4 +79,7 @@ dependencies {
     }
 
     androidTestCompile "org.hamcrest:hamcrest-core:${hamcrestVersion}"
+    feature project(":topeka-ui")
+    application project(":topekaapk")
+    compile 'com.android.support:appcompat-v7:25.3.1'
 }

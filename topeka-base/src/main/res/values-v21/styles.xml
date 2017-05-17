@@ -17,8 +17,14 @@
 <resources>
     <style name="Topeka" parent="Topeka.Base">
         <item name="android:windowDrawsSystemBarBackgrounds">true</item>
-        <item name="android:windowContentTransitions">false</item>
+        <item name="android:windowContentTransitions">true</item>
         <item name="android:actionOverflowButtonStyle">@style/Topeka.ActionButton</item>
+    </style>
+
+    <style name="Topeka.QuizActivity">
+    </style>
+
+    <style name="Topeka.SignInActivity">
     </style>
 
     <style name="Topeka.CategorySelectionActivity">

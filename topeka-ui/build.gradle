@@ -1,16 +1,16 @@
-apply plugin: 'com.android.application'
+apply plugin: 'com.android.feature'
 
 
 android {
-    compileSdkVersion 25
-    buildToolsVersion "25.0.2"
+    compileSdkVersion project.compileSdkVersion
+    buildToolsVersion "${project.buildToolsVersion}"
+
 
     dataBinding {
         enabled true
     }
 
     defaultConfig {
-        applicationId "com.google.samples.apps.topeka"
         minSdkVersion 19
         targetSdkVersion 25
         versionCode 1
@@ -28,6 +28,5 @@ android {
 }
 
 dependencies {
-    implementation project(':topeka-base')
-    implementation project(":topeka-ui")
+    api project(':topeka-base')
 }
